@@ -14,7 +14,6 @@ import {LineChart} from 'react-native-chart-kit';
 import {Circle} from 'react-native-progress';
 import {useSelector} from 'react-redux';
 import Icon from '../../themes/icon';
-import {SvgIcon} from '../../themes/Svg';
 
 const base = [
   555, 300, 430, 200, 433, 678, 455, 321, 333, 400, 787, 322, 720, 480, 333,
@@ -42,6 +41,7 @@ const datac = {
   ],
 };
 export default function Generality() {
+  const profile = useSelector(state => state.profile.data);
   const dataUserGoogle = useSelector(state => state.login.dataUser);
   const [dataChart, setDataChart] = useState({showType: 'week', data: datac});
   const [foodCal, setFoodCal] = useState({value: 0});
@@ -90,7 +90,32 @@ export default function Generality() {
           style={styles.ImageUser}
         />
       </View>
-      <Text style={styles.titlePart}>Calories</Text>
+      <Text style={[styles.titlePart, , {marginBottom: 20}]}>BMI</Text>
+      <View style={[styles.cC, {marginTop: 0}]}>
+        <View style={styles.layoutBMI}>
+          <View style={{justifyContent: 'center'}}>
+            <Text
+              style={styles.textBody}>{`Height: ${profile?.height} cm`}</Text>
+            <Text
+              style={styles.textBody}>{`Weight: ${profile?.weight} kg`}</Text>
+          </View>
+          <View
+            style={{
+              marginLeft: 40,
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <Text style={styles.textBMI}>
+              {Math.round(
+                profile?.weight /
+                  ((profile?.height / 100) * (profile?.height / 100)),
+              )}
+            </Text>
+            <Text style={styles.textBody}>{' WHO BMI (kg/m2)'}</Text>
+          </View>
+        </View>
+      </View>
+      <Text style={[styles.titlePart, {marginBottom: 20}]}>Calories</Text>
       <View style={styles.chart}>
         <View style={styles.chartDe}>
           <Text style={styles.chartTit}>Energy consumed today</Text>
@@ -225,6 +250,14 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
   },
+  textBody: {
+    fontSize: 16,
+    fontWeight: 'medium',
+  },
+  textBMI: {
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
   titleU: {
     fontSize: 11,
     color: '#B2B2B2',
@@ -284,6 +317,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#FFFFFF',
     marginTop: 25,
+    paddingVertical: 10,
   },
   cD: {
     fontSize: 20,
@@ -293,5 +327,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  layoutBMI: {
+    // backgroundColor: 'pink',
+    flexDirection: 'row',
+    alignSelf: 'center',
+    justifyContent: 'center',
   },
 });

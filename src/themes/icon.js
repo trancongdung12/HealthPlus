@@ -77,5 +77,6 @@ const Icon = {
   icMoon1: require('../assets/icon/icMoon1.png'),
   icAnalysis: require('../assets/icon/icAnalysis.png'),
   icClock: require('../assets/icon/icClock.png'),
+  icSkinCheck: require('../assets/icon/icSkinCheck.png'),
 };
 export default Icon;

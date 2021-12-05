@@ -23,9 +23,13 @@ const openFoodDection = () => {
   NavigationUtils.pushScreen(
     'HomeTab',
     'FoodDetection',
-    'Phân tích dinh dưỡng',
+    'Nutritional analysis',
   );
 };
+const openSkinCheck = () => {
+  NavigationUtils.pushScreen('HomeTab', 'SkinDetection', 'Skin analysis');
+};
+
 const openMeansureHeartBeat = () => {
   NavigationUtils.pushScreen(
     'HomeTab',
@@ -41,7 +45,7 @@ const opendoctors = () =>
   );
 
 const openGenerality = () =>
-  NavigationUtils.pushScreen('HomeTab', 'Generality', 'Tổng quát');
+  NavigationUtils.pushScreen('HomeTab', 'Generality', 'Generality');
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -141,30 +145,36 @@ export default function Home() {
               <Feature
                 icon={Icon.icEye}
                 name="Theo dõi hoạt động"
-                content="4 hoạt động"
+                content="4 activities"
                 i18nKey="Activities"
                 onPress={openGenerality}
               />
               <Feature
                 icon={Icon.icHeart}
                 name="Đo nhịp tim"
-                content="Bắt đầu"
+                content="Start"
                 i18nKey="Pulse"
                 onPress={openMeansureHeartBeat}
               />
               <Feature
                 icon={Icon.icChat}
                 name="Chat With Mr.Heath+"
-                content="Bắt đầu"
+                content="Start"
                 i18nKey="Chat-with-Mr-Health"
                 onPress={opendoctors}
               />
               <Feature
                 icon={Icon.icList}
                 name="Kiểm tra chế độ dinh dưỡng"
-                content="Bắt đầu"
+                content="Start"
                 i18nKey="Nutrition"
                 onPress={openFoodDection}
+              />
+              <Feature
+                icon={Icon.icSkinCheck}
+                name="Skin"
+                content="Start"
+                onPress={openSkinCheck}
               />
             </ScrollView>
           </View>

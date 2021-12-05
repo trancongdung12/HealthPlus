@@ -23,12 +23,17 @@ export default function Feature({onPress, name, i18nKey, content, icon}) {
         <View style={styles.content}>
           <Image source={icon} style={styles.iconStyle} resizeMode="contain" />
           <View style={styles.row}>
-            <Text style={styles.title}>{i18nKey ? I18n.t(i18nKey) : name}</Text>
+            <View>
+              <Text style={styles.title}>
+                {i18nKey ? I18n.t(i18nKey) : name}
+              </Text>
+              <Text style={styles.subTitle}>{content}</Text>
+            </View>
+
             <View style={styles.borderCheck}>
               <Image source={Icon.icCheck} style={styles.iconCheck} />
             </View>
           </View>
-          <Text style={styles.subTitle}>{content}</Text>
         </View>
       </ImageBackground>
     </TouchableOpacity>
@@ -55,6 +60,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato',
   },
   subTitle: {
+    marginTop: 5,
     fontSize: 12,
     fontFamily: 'Lato',
     color: Colors.colorBlackBlue,

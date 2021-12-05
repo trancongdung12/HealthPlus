@@ -1,27 +1,35 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
-import { Icon, Images, Colors } from '../../themes/index';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
+import {Icon, Images, Colors} from '../../themes/index';
 import DataInterface from '../../dataFunction/dataShowInfo';
 import CItemFunctionUser from '../../components/CItemFunctionUser';
-import { NavigationUtils } from '../../navigation/index';
-import { useSelector, useDispatch } from 'react-redux';
+import {NavigationUtils} from '../../navigation/index';
+import {useSelector, useDispatch} from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import googleFit from 'react-native-google-fit';
 import DisplayedText from '../../components/displayedText';
-import Dialog from "react-native-dialog";
-import LanguageAction  from '../../redux/Language/actions';
+import Dialog from 'react-native-dialog';
+import LanguageAction from '../../redux/Language/actions';
 
 //loginEditInform
 export default function User() {
-  const dataUserGoogle =useSelector((state) => state.profile.data);
+  const dataUserGoogle = useSelector(state => state.profile.data);
 
-  var gender_user = ''
-  if(dataUserGoogle.gender == true){
-    gender_user = 'Nam'
-  }else{
-    gender_user = 'Nữ'
+  var gender_user = '';
+  if (dataUserGoogle?.gender == true) {
+    gender_user = 'Nam';
+  } else {
+    gender_user = 'Nữ';
   }
 
   const dataInformation = [
@@ -51,8 +59,7 @@ export default function User() {
       title: gender_user,
     },
   ];
-  
-  
+
   const dispatch = useDispatch();
   const [category, setCategory] = useState(true);
   const [information, setInformation] = useState(false);
@@ -71,17 +78,17 @@ export default function User() {
   };
 
   const logout = async () => {
-    await AsyncStorage.removeItem("USER_DATA")
-    await AsyncStorage.removeItem("User_profile")
-    googleFit.disconnect()
-    await GoogleSignin.signOut()
-    NavigationUtils.startLogin()
+    await AsyncStorage.removeItem('USER_DATA');
+    await AsyncStorage.removeItem('User_profile');
+    googleFit.disconnect();
+    await GoogleSignin.signOut();
+    NavigationUtils.startLogin();
   };
 
   const changeLanguage = () => {
     // setVisible(true)
-    NavigationUtils.pushScreen('User','SettingLanguage');
-  }
+    NavigationUtils.pushScreen('User', 'SettingLanguage');
+  };
 
   return (
     <View>
@@ -89,14 +96,15 @@ export default function User() {
         <Image source={Images.logo} style={styles.imageLogo} />
       </View>
       <View style={styles.user}>
-        <Image source={{ uri: dataUserGoogle.photo }} style={styles.imageUser} />
+        <Image source={{uri: dataUserGoogle.photo}} style={styles.imageUser} />
         <View style={styles.username}>
           <Text style={styles.name}>{dataUserGoogle.name}</Text>
           <TouchableOpacity
-            style={{ marginTop: 10 }}
-            onPress={() => NavigationUtils.startEditInformation()}
-          >
-          <DisplayedText i18nKey={'edit-info'} styleText={styles.textButton}>Chỉnh sửa thông tin cá nhân</DisplayedText>
+            style={{marginTop: 10}}
+            onPress={() => NavigationUtils.startEditInformation()}>
+            <DisplayedText i18nKey={'edit-info'} styleText={styles.textButton}>
+              Chỉnh sửa thông tin cá nhân
+            </DisplayedText>
           </TouchableOpacity>
         </View>
       </View>
@@ -105,31 +113,48 @@ export default function User() {
           <TouchableOpacity
             style={
               category === true
-                ? [styles.buttonTabBar, { backgroundColor: '#114EDC' }]
+                ? [styles.buttonTabBar, {backgroundColor: '#114EDC'}]
                 : styles.buttonTabBar
             }
-            onPress={() => menu()}
-          >
-            <DisplayedText i18nKey={'menu'} styleText={styles.titleButton}>Danh mục</DisplayedText>
+            onPress={() => menu()}>
+            <DisplayedText i18nKey={'menu'} styleText={styles.titleButton}>
+              Danh mục
+            </DisplayedText>
           </TouchableOpacity>
           <TouchableOpacity
             style={
               information === true
-                ? [styles.buttonTabBar, { backgroundColor: '#114EDC' }]
+                ? [styles.buttonTabBar, {backgroundColor: '#114EDC'}]
                 : styles.buttonTabBar
             }
-            onPress={() => info()}
-          >
-            <DisplayedText i18nKey={'information'} styleText={styles.titleButton}>Thông tin cá nhân</DisplayedText>
+            onPress={() => info()}>
+            <DisplayedText
+              i18nKey={'information'}
+              styleText={styles.titleButton}>
+              Thông tin cá nhân
+            </DisplayedText>
           </TouchableOpacity>
         </View>
-        <ScrollView style={{height: 362,}}>
+        <ScrollView style={{height: 362}}>
           <View style={styles.content}>
             {dataShow.map((item, index) => (
-              <CItemFunctionUser title={item.title} icon={item.icon} index={index} i18nKey={item.i18nKey} />
+              <CItemFunctionUser
+                title={item.title}
+                icon={item.icon}
+                index={index}
+                i18nKey={item.i18nKey}
+              />
             ))}
-            <CItemFunctionUser title={'Language'} icon={Icon.icon_language} feature={changeLanguage} />
-            <CItemFunctionUser title={'Đăng xuất'} icon={Icon.icon_logout} feature={logout} />
+            <CItemFunctionUser
+              title={'Language'}
+              icon={Icon.icon_language}
+              feature={changeLanguage}
+            />
+            <CItemFunctionUser
+              title={'Đăng xuất'}
+              icon={Icon.icon_logout}
+              feature={logout}
+            />
           </View>
         </ScrollView>
       </View>
