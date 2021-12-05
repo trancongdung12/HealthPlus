@@ -17,16 +17,17 @@ import VerifyCode from '../screens/Authentication/verifyCode';
 import ResetPassword from '../screens/Authentication/resetPassword';
 import RegisterUser from '../screens/Authentication/register';
 import EditInformation from '../screens/Authentication/editInformation';
-import StepsCounter from '../screens/StepsCounter'
-import ConnectGGFit from '../screens/Authentication/ConnectGGFit'
+import StepsCounter from '../screens/StepsCounter';
+import ConnectGGFit from '../screens/Authentication/ConnectGGFit';
 import Generality from '../screens/Home/generality';
 import ProfileSetup from '../screens/Authentication/ProfileSetup';
 import SettingLanguage from '../screens/Setting/language';
 import FoodDetection from '../screens/FoodDetection';
-import MeasureHeartBeat from '../screens/MeasureHeartBeat'
-import TrackSleep from '../screens/TrackSleep'
-import Doctors from '../screens/Doctors'
-import InfoDoctor from '../screens/Doctors/infoDoctor'
+import MeasureHeartBeat from '../screens/MeasureHeartBeat';
+import TrackSleep from '../screens/TrackSleep';
+import Doctors from '../screens/Doctors';
+import InfoDoctor from '../screens/Doctors/infoDoctor';
+import ChatWithDoctor from '../screens/Chat';
 
 const SCREENS = {
   Home,
@@ -50,7 +51,8 @@ const SCREENS = {
   MeasureHeartBeat,
   TrackSleep,
   Doctors,
-  InfoDoctor
+  InfoDoctor,
+  ChatWithDoctor,
 };
 
 function ReduxProvider(Component) {
@@ -67,6 +69,6 @@ function registerScreens(store) {
       () => ReduxProvider(SCREENS[screenName]),
       () => SCREENS[screenName],
     );
-  })
+  });
 }
 export default registerScreens;
