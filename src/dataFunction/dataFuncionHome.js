@@ -1,52 +1,52 @@
 import { Icon } from '../themes/index';
 const listItemFunction = [
   {
-    title: 'Theo dõi hoạt động',
+    title: 'Activity tracking',
     icon: Icon.icon_trackActivity,
     pro: false,
   },
   {
-    title: 'Đếm số bước chân',
+    title: 'Footsteps Tracking',
     icon: Icon.icon_countWalk,
     pro: false,
   },
   {
-    title: 'Theo dõi lượng nước',
+    title: 'Monitor the amount of water',
     icon: Icon.icon_water,
     pro: false,
   },
   {
-    title: 'Giờ giấc đi ngủ',
+    title: 'Giờ giấc ngủ dậy',
     icon: Icon.icon_bedtime,
     pro: false,
   },
   {
-    title: 'Đo nhịp tim',
+    title: 'Measure heartbeat',
     icon: Icon.icon_measureHeartbeat,
     pro: false,
   },
   {
-    title: 'Chế độ dinh dưỡng',
+    title: 'Nutrition',
     icon: Icon.icon_nutrition,
     pro: false,
   },
   {
-    title: 'Chat cùng Mr. Health+',
+    title: 'Chat with Mr. Health+',
     icon: Icon.icon_chat,
     pro: false,
   },
   {
-    title: 'Cảnh báo bệnh',
+    title: 'Disease warning',
     icon: Icon.icon_disease,
     pro: true,
   },
   {
-    title: 'Bác sỹ tư vấn',
+    title: 'Consulting doctor',
     icon: Icon.icon_consultingDoctor,
     pro: true,
   },
   {
-    title: 'Nâng cấp',
+    title: 'Upgrade',
     icon: Icon.icon_upgrade,
     pro: false,
   },

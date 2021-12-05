@@ -15,7 +15,6 @@ import Feature from '../../components/Feature';
 import Steps from '../../components/Steps';
 import Sleep from '../../components/Sleep';
 import DisplayedText from '../../components/displayedText';
-import LanguageAction from '../../redux/Language/actions';
 import {NavigationUtils} from '../../navigation';
 import Images from '../../themes/image';
 
@@ -84,7 +83,7 @@ export default function Home() {
                 </>
               ) : (
                 <Text style={{color: Colors.white}}>
-                  Vui Lòng Đăng Nhập Để Sử Dụng Ứng Dụng
+                  Please login to using application
                 </Text>
               )}
             </View>
@@ -105,7 +104,7 @@ export default function Home() {
                     i18nKey={'heartbeat'}
                     styleText={styles.titleButton}>
                     {' '}
-                    Nhip Tim
+                    Heartbeat
                   </DisplayedText>
                 </View>
                 <View style={styles.parameter}>
@@ -137,7 +136,7 @@ export default function Home() {
             </TouchableOpacity>
           </View>
           <View style={styles.recommentSession}>
-            <Text style={styles.titlePart}>ĐỀ XUẤT </Text>
+            <Text style={styles.titlePart}>SUGGESTIONS</Text>
             <ScrollView
               style={styles.recommendScroll}
               horizontal={true}
@@ -180,19 +179,19 @@ export default function Home() {
           </View>
 
           <View style={styles.activityContainner}>
-            <Text style={styles.titlePart}>HOẠT ĐỘNG</Text>
+            <Text style={styles.titlePart}>ACTIVITIES</Text>
             <Steps
               title={'Đi bộ'}
               icon={Icon.icon_walk}
               completeLevels={currentSteps / 5000}
-              goal={currentSteps + '/5000 bước'}
+              goal={currentSteps + '/5000 step'}
               color={'#87DCFA'}
             />
             <Sleep
               title={'Ngủ'}
               icon={Icon.icon_sleeping}
               completeLevels={null}
-              goal={'4 giờ 30 phút'}
+              goal={'4 hours 30 minutes'}
               color={'#F8EDD2'}
             />
           </View>

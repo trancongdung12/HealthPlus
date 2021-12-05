@@ -5,8 +5,8 @@ import vi from './locales/vi';
 
 I18n.fallbacks = true;
 I18n.translations = {
-    en,
-    vi
+  en,
+  vi,
 };
 
 export default I18n;

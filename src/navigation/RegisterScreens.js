@@ -28,6 +28,7 @@ import TrackSleep from '../screens/TrackSleep';
 import Doctors from '../screens/Doctors';
 import InfoDoctor from '../screens/Doctors/infoDoctor';
 import SkinDetection from '../screens/SkinDetection/index';
+import ChatWithDoctor from '../screens/Chat';
 
 const SCREENS = {
   Home,
@@ -52,7 +53,11 @@ const SCREENS = {
   TrackSleep,
   Doctors,
   InfoDoctor,
+<<<<<<< HEAD
   SkinDetection,
+=======
+  ChatWithDoctor,
+>>>>>>> 0030faa6742e3e2ddb425d815666b4d9e6944f06
 };
 
 function ReduxProvider(Component) {

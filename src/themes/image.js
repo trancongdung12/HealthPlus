@@ -1,3 +1,5 @@
+import moduleName from '../assets/icon/icTeeth.png';
+
 const Images = {
   logo: require('../assets/image/logo.png'),
   IconCalendar: require('../assets/image/logo.png'),
@@ -18,5 +20,9 @@ const Images = {
   imgBody: require('../assets/image/imgBody.png'),
   imgBPM: require('../assets/image/imgBPM.png'),
   imgDefault: require('../assets/image/imgDefault.jpeg'),
+  moduleName,
+  imgDoctor: require('../assets/image/imgDoctor.jpeg'),
+  imgDoctorMan: require('../assets/image/imgDoctorMen.jpeg'),
+  imgBGDoctorInfo: require('../assets/image/imgBackgroundDoctorInfo.png'),
 };
 export default Images;

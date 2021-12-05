@@ -5,7 +5,6 @@ import {Colors} from '../themes';
 import HomeTab from './Tabs/HomeTab';
 import UserTab from './Tabs/UserTab';
 import HealthTab from './Tabs/HealthTab';
-import AnnouncementTab from './Tabs/AnnouncementTab';
 import UpgradeTab from './Tabs/UpgradeTab';
 
 const pushScreen = (stackId, componentName, title, passProps) => {
