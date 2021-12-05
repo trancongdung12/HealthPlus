@@ -12,6 +12,8 @@ import CColumChartSteps from '../../components/Chart/CColumChartSteps';
 import CCricleChartSteps from '../../components/Chart/CCricleChartSteps';
 // import {SvgIcon} from '../../themes/Svg';
 import {calBMI} from '../../utils/Tool';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Colors from '../../themes/color';
 
 export default function StepsCounter() {
   const dataUserGoogle = useSelector(state => state.profile.data);
@@ -64,13 +66,13 @@ export default function StepsCounter() {
     <View style={style.container}>
       <View style={style.topContainer}>
         <View style={style.selectDate}>
-          <TouchableOpacity
-            style={{marginRight: 20}}
-            onPress={() => preDay()}></TouchableOpacity>
+          <TouchableOpacity style={{marginRight: 20}} onPress={() => preDay()}>
+            <Icon name="chevron-left" color={Colors.white} size={20} />
+          </TouchableOpacity>
           <Text style={style.dateTitle}>Date {currentSteps.date}</Text>
-          <TouchableOpacity
-            style={{marginLeft: 20}}
-            onPress={() => nextDay()}></TouchableOpacity>
+          <TouchableOpacity style={{marginLeft: 20}} onPress={() => nextDay()}>
+            <Icon name="chevron-right" color={Colors.white} size={20} />
+          </TouchableOpacity>
         </View>
         <Text style={style.titleDay}>{dailySteps[index]?.date}</Text>
         <View style={style.cricleChart}>

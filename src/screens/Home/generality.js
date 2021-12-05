@@ -185,14 +185,11 @@ export default function Generality() {
             <Text style={styles.cD}>
               {calBMI(profile?.weight, profile?.height) * 250}
             </Text>
-            <Text
-              styles={
-                styles.sCD
-              }>{`${currentSteps} steps left to reach the goal`}</Text>
+            <Text styles={styles.sCD}>{`${
+              calBMI(profile?.weight, profile?.height) * 250 - currentSteps
+            } steps left to reach the goal`}</Text>
           </View>
-          <View>
-            {/* <Image source={Icon.icStep} style={styles.iconWalk} /> */}
-          </View>
+          <View></View>
         </View>
       </View>
       <View style={styles.cC}>

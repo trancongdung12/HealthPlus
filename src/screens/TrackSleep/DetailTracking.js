@@ -60,8 +60,8 @@ const DetailTracking = ({data}) => {
     <View style={styles.container}>
       <View style={styles.time}>
         <View style={styles.first}>
-          <Text style={styles.titleTime}>{data?.title}</Text>
-          <Text style={styles.date}>{data?.date}</Text>
+          {/* <Text style={styles.titleTime}>{data?.title}</Text> */}
+          <Text style={[styles.date, {fontSize: 16}]}>{data?.date}</Text>
         </View>
         <View style={styles.last}>
           <Icon name="calendar-alt" size={24} />
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   },
   line: {
     marginTop: 5,
-    height: 5,
+    height: 3,
     backgroundColor: '#dcdcdc',
     marginVertical: 50,
   },
