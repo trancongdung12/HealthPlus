@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -7,71 +7,102 @@ import {
   Text,
   Image,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { Colors, Icon } from '../../themes/index';
+import {useDispatch, useSelector} from 'react-redux';
+import {Colors, Icon} from '../../themes/index';
 import Feature from '../../components/Feature';
-import { SVG } from '../../themes/Svg';
 import Steps from '../../components/Steps';
 import Sleep from '../../components/Sleep';
 import DisplayedText from '../../components/displayedText';
-import LanguageAction  from '../../redux/Language/actions';
-import { NavigationUtils } from '../../navigation';
+import LanguageAction from '../../redux/Language/actions';
+import {NavigationUtils} from '../../navigation';
+import Images from '../../themes/image';
 
-const openFoodDection=()=>{
-  NavigationUtils.pushScreen("HomeTab","FoodDetection","Phân tích dinh dưỡng")
-}
-const openMeansureHeartBeat =()=>{
-  NavigationUtils.pushScreen("HomeTab","MeasureHeartBeat","Measure heart beat")
-}
-const opendoctors =()=>NavigationUtils.pushScreen("HomeTab","Doctors","Get advice from top doctors")
+const openFoodDection = () => {
+  NavigationUtils.pushScreen(
+    'HomeTab',
+    'FoodDetection',
+    'Phân tích dinh dưỡng',
+  );
+};
+const openMeansureHeartBeat = () => {
+  NavigationUtils.pushScreen(
+    'HomeTab',
+    'MeasureHeartBeat',
+    'Measure heart beat',
+  );
+};
+const opendoctors = () =>
+  NavigationUtils.pushScreen(
+    'HomeTab',
+    'Doctors',
+    'Get advice from top doctors',
+  );
 
-const openGenerality=()=>NavigationUtils.pushScreen("HomeTab","Generality","Tổng quát")
+const openGenerality = () =>
+  NavigationUtils.pushScreen('HomeTab', 'Generality', 'Tổng quát');
 
 export default function Home() {
-  const dispatch = useDispatch()
-  const dataUserGoogle =useSelector((state) => state.profile.data);
+  const dispatch = useDispatch();
+  const dataUserGoogle = useSelector(state => state.profile.data);
 
-  const steps=useSelector((state)=>state.googlefit.dailySteps)
-  const [currentSteps, setCurrentSteps] = useState(0)
-  
+  const steps = useSelector(state => state.googlefit.dailySteps);
+  const [currentSteps, setCurrentSteps] = useState(0);
+
   useEffect(() => {
-    if(steps){
-      steps.length>0 && setCurrentSteps(steps[steps.length-1].value)
+    if (steps) {
+      steps.length > 0 && setCurrentSteps(steps[steps.length - 1].value);
     }
-  })
+  });
 
   return (
-    <View style={{ height: '100%' }}>
-      <View style={styles.header}>
-      <SVG.Header/>
-      </View>
-      <View style={styles.content}>
-        <View style={styles.headers}>
-          {dataUserGoogle !== null ? (
-            <>
-              <View>
-                <Text style={styles.textTitle}>Good afternoon!</Text>
-                <Text style={styles.textTitle}>{dataUserGoogle.name}</Text>
-              </View>
-              <TouchableOpacity>
-                <Image source={{ uri: dataUserGoogle.photo }} style={styles.ImageUser} />
-              </TouchableOpacity>
-            </>
-          ) : (
-            <Text style={{ color: Colors.white }}>
-              Vui Lòng Đăng Nhập Để Sử Dụng Ứng Dụng
-            </Text>
-          )}
-      </View>
+    <View style={{height: '100%'}}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.functionHeader}>
-            <TouchableOpacity style={[styles.function, { backgroundColor: '#D3664E' }]}>
+        <View style={styles.header}>
+          <ImageBackground
+            source={Images.bgHome}
+            resizeMode="cover"
+            style={styles.headerImage}>
+            <View style={styles.headerContent}>
+              {dataUserGoogle !== null ? (
+                <>
+                  <View>
+                    <Text style={styles.textTitle}>Good afternoon!</Text>
+                    <Text style={styles.textTitle}>{dataUserGoogle.name}</Text>
+                  </View>
+                  <TouchableOpacity>
+                    <Image
+                      source={{uri: dataUserGoogle.photo}}
+                      style={styles.ImageUser}
+                    />
+                  </TouchableOpacity>
+                </>
+              ) : (
+                <Text style={{color: Colors.white}}>
+                  Vui Lòng Đăng Nhập Để Sử Dụng Ứng Dụng
+                </Text>
+              )}
+            </View>
+          </ImageBackground>
+        </View>
+        <View style={styles.content}>
+          <View style={styles.functionHeader}>
+            <TouchableOpacity
+              style={[styles.function, {backgroundColor: '#D3664E'}]}>
               <View style={styles.contentFunction}>
                 <View style={styles.titlePage}>
-                  <Image source={Icon.icon_heartbeat} style={styles.iconButton} />
+                  <Image
+                    source={Icon.icon_heartbeat}
+                    style={styles.iconButton}
+                  />
                   {/* <Text style={styles.titleButton}>Nhịp tim</Text> */}
-                  <DisplayedText i18nKey={'heartbeat'} styleText={styles.titleButton}> Nhip Tim</DisplayedText>
+                  <DisplayedText
+                    i18nKey={'heartbeat'}
+                    styleText={styles.titleButton}>
+                    {' '}
+                    Nhip Tim
+                  </DisplayedText>
                 </View>
                 <View style={styles.parameter}>
                   <Text style={styles.titleParameter}>66</Text>
@@ -79,11 +110,20 @@ export default function Home() {
                 </View>
               </View>
             </TouchableOpacity>
-          <TouchableOpacity style={[styles.function, { backgroundColor: '#F5B04A' }]}>
+            <TouchableOpacity
+              style={[styles.function, {backgroundColor: '#F5B04A'}]}>
               <View style={styles.contentFunction}>
                 <View style={styles.titlePage}>
-                  <Image source={Icon.icon_dropWater} style={styles.iconButton} />
-                  <DisplayedText i18nKey={'Oxygen'} styleText={styles.titleButton}> Nồng độ oxy </DisplayedText>
+                  <Image
+                    source={Icon.icon_dropWater}
+                    style={styles.iconButton}
+                  />
+                  <DisplayedText
+                    i18nKey={'Oxygen'}
+                    styleText={styles.titleButton}>
+                    {' '}
+                    Nồng độ oxy{' '}
+                  </DisplayedText>
                 </View>
                 <View style={styles.parameter}>
                   <Text style={styles.titleParameter}>000/00</Text>
@@ -91,86 +131,89 @@ export default function Home() {
                 </View>
               </View>
             </TouchableOpacity>
+          </View>
+          <View style={styles.recommentSession}>
+            <Text style={styles.titlePart}>ĐỀ XUẤT </Text>
+            <ScrollView
+              style={styles.recommendScroll}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}>
+              <Feature
+                icon={Icon.icEye}
+                name="Theo dõi hoạt động"
+                content="4 hoạt động"
+                i18nKey="Activities"
+                onPress={openGenerality}
+              />
+              <Feature
+                icon={Icon.icHeart}
+                name="Đo nhịp tim"
+                content="Bắt đầu"
+                i18nKey="Pulse"
+                onPress={openMeansureHeartBeat}
+              />
+              <Feature
+                icon={Icon.icChat}
+                name="Chat With Mr.Heath+"
+                content="Bắt đầu"
+                i18nKey="Chat-with-Mr-Health"
+                onPress={opendoctors}
+              />
+              <Feature
+                icon={Icon.icList}
+                name="Kiểm tra chế độ dinh dưỡng"
+                content="Bắt đầu"
+                i18nKey="Nutrition"
+                onPress={openFoodDection}
+              />
+            </ScrollView>
+          </View>
+
+          <View style={styles.activityContainner}>
+            <Text style={styles.titlePart}>HOẠT ĐỘNG</Text>
+            <Steps
+              title={'Đi bộ'}
+              icon={Icon.icon_walk}
+              completeLevels={currentSteps / 5000}
+              goal={currentSteps + '/5000 bước'}
+              color={'#87DCFA'}
+            />
+            <Sleep
+              title={'Ngủ'}
+              icon={Icon.icon_sleeping}
+              completeLevels={null}
+              goal={'4 giờ 30 phút'}
+              color={'#F8EDD2'}
+            />
+          </View>
         </View>
-      <View style={styles.recommentSession}>
-        <Text style={styles.titlePart}>ĐỀ XUẤT </Text>
-        <ScrollView horizontal={true}>
-          <Feature
-          id="A"
-          name="Theo dõi hoạt động"
-          content="4 hoạt động"
-          i18nKey="Activities"
-          onpress={openGenerality}
-          />
-          <Feature
-          id="H"
-          name="Đo nhịp tim"
-          content="Bắt đầu"
-          i18nKey="Pulse"
-          onpress={openMeansureHeartBeat}
-          />
-          <Feature
-          id="C"
-          name="Chat With Mr.Heath+"
-          content="Bắt đầu"
-          i18nKey="Chat-with-Mr-Health"
-          onpress={opendoctors}
-          />
-          <Feature
-          id="F"
-          name="Kiểm tra chế độ dinh dưỡng"
-          content="Bắt đầu"
-          i18nKey="Nutrition"
-          onpress={openFoodDection}
-          />
-        </ScrollView>
-      </View>
-      
-      <View style={styles.activityContainner}>
-        <Text style={styles.titlePart}>HOẠT ĐỘNG</Text>
-          <Steps
-            title={'Đi bộ'}
-            icon={Icon.icon_walk}
-            completeLevels={currentSteps/5000}
-            goal={ currentSteps+'/5000 bước'}
-            color={'#87DCFA'}
-          />
-          <Sleep
-            title={'Ngủ'}
-            icon={Icon.icon_sleeping}
-            completeLevels={null}
-            goal={'4 giờ 30 phút'}
-            color={'#F8EDD2'}
-          />
-      </View>
       </ScrollView>
     </View>
-  </View>
   );
 }
 
 const styles = StyleSheet.create({
-  header:{
+  header: {
+    height: 285,
     flex: 1,
-    marginTop:-40
-
+    marginTop: -40,
   },
-  activityContainner:{
-    marginBottom:50
-
+  headerImage: {
+    flex: 1,
   },
-  recommentSession:{
-    marginBottom:-50
-
+  activityContainner: {
+    marginBottom: 50,
   },
   content: {
     marginLeft: 25,
     marginRight: 25,
     marginTop: 50,
   },
-  headers: {
+  headerContent: {
     justifyContent: 'space-between',
     flexDirection: 'row',
+    marginTop: 70,
+    marginHorizontal: 20,
   },
   textTitle: {
     fontSize: 25,
@@ -185,7 +228,7 @@ const styles = StyleSheet.create({
   },
 
   functionHeader: {
-    marginTop: 70,
+    marginTop: -60,
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
@@ -233,5 +276,11 @@ const styles = StyleSheet.create({
     color: Colors.colorBlackBlue,
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  recommendScroll: {
+    marginTop: 20,
+  },
+  content: {
+    marginHorizontal: 20,
   },
 });

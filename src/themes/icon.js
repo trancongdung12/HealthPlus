@@ -64,22 +64,18 @@ const Icon = {
   icon_phone: require('../assets/icon/phone-call.png'),
   icon_weight: require('../assets/icon/weight.png'),
 
-  //page-doctor
-  // chat: require('../assets/icon/icondoctor/chat.png'),
-
-  // eye: require('../assets/icon/icondoctor/eye.png'),
-  // heartbeat: require('../assets/icon/icondoctor/heartbeat.png'),
-  // left_arrow: require('../assets/icon/icondoctor/left-arrow.png'),
-  // loupe: require('../assets/icon/icondoctor/loupe.png'),
-  // menu: require('../assets/icon/icondoctor/menu.png'),
-  // molar_tooth: require('../assets/icon/icondoctor/molar-tooth.png'),
-  // more: require('../assets/icon/icondoctor/more.png'),
-  // phone_call: require('../assets/icon/icondoctor/phone-call.png'),
-  // profile: require('../assets/icon/icondoctor/profile.png'),
-  // video_camera: require('../assets/icon/icondoctor/video-camera.png'),
-
-  // people: require('../assets/icon/icondoctor/basic-silhouette.png'),
-  // list: require('../assets/icon/icondoctor/shopping-list.png'),
-  // silhouette: require('../assets/icon/icondoctor/stethoscope.png'),
+  //icon new
+  icStep: require('../assets/icon/icStep.png'),
+  icMoon: require('../assets/icon/icMoon.png'),
+  icCheck: require('../assets/icon/icCheck.png'),
+  icEye: require('../assets/icon/icEye.png'),
+  icHeart: require('../assets/icon/icHeart.png'),
+  icChat: require('../assets/icon/icChat.png'),
+  icList: require('../assets/icon/icList.png'),
+  apple: require('../assets/icon/apple.png'),
+  heartbeat: require('../assets/icon/heartbeat.png'),
+  icMoon1: require('../assets/icon/icMoon1.png'),
+  icAnalysis: require('../assets/icon/icAnalysis.png'),
+  icClock: require('../assets/icon/icClock.png'),
 };
 export default Icon;

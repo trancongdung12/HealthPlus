@@ -8,17 +8,17 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "generateIconFontComponent": "./node_modules/.bin/generate-icon ./src/themes/Fonts/styles.css --componentName=health-appicon --fontFamily=health-appicon > ./node_modules/react-native-vector-icons/health-appicon.js",
-    "copyIconFontToNodeModules": "cp ./src/themes/Fonts/font/health-appicon.ttf ./node_modules/react-native-vector-icons/Fonts/health-appicon.ttf",
-    "createFontToNodeModule": "cp ./src/themes/Fonts/fonts/*.ttf ./node_modules/react-native-vector-icons/Fonts",
-    "createIconFont": "yarn run generateIconFontComponent && yarn run copyIconFontToNodeModules && yarn run createFontToNodeModule"
+    "generateIconFontComponent": ".\\node_modules\\.bin\\generate-icon .\\src\\themes\\Fonts\\styles.css --componentName=health-appicon --fontFamily=health-appicon > .\\node_modules\\react-native-vector-icons\\health-appicon.js",
+    "wcreateIconFont": "npm run generateIconFontComponent && npm run wcopyIconFontToNodeModules && npm run wcreateFontToNodeModule",
+    "wcreateFontToNodeModule": "copy .\\src\\themes\\Fonts\\*.ttf .\\node_modules\\react-native-vector-icons\\Fonts",
+    "wcopyIconFontToNodeModules": "copy .\\src\\themes\\Fonts\\fonts\\health-appicon.ttf .\\node_modules\\react-native-vector-icons\\Fonts"
   },
   "dependencies": {
     "@react-native-community/art": "^1.2.0",
     "@react-native-community/async-storage": "1.6.2",
     "@react-native-community/checkbox": "^0.5.7",
     "@react-native-community/picker": "^1.8.1",
-    "@react-native-google-signin/google-signin": "^6.0.0",
+    "@react-native-google-signin/google-signin": "^7.0.1",
     "axios": "^0.21.1",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.20",

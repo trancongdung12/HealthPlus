@@ -20,9 +20,8 @@ const Colors = {
   error: '#dc3446',
   warning: '#ffc104',
 
-
   blue: '#CDEBFE',
-  // color homepage 
+  // color homepage
   activity: '#BA6C24',
   health: '#30A6D1',
   chat: '#31AA52',
@@ -49,7 +48,7 @@ const Colors = {
   //form start
   buttonStart: '#4A7EFB',
   colorLightBlack: '#8C92A4',
-
+  blueGrey: '#F0F4F8',
 };
 
 export default Colors;

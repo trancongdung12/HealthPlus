@@ -1,20 +1,23 @@
-/* eslint-disable react-native/no-inline-styles */
-import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
-import { Icon, Colors } from '../../themes/index';
-import { NavigationUtils } from '../../navigation/index';
-import loginType from '../../redux/LoginRedux/Actions';
-import { useSelector, useDispatch } from 'react-redux';
-import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import AsyncStorage from '@react-native-community/async-storage';
-import GoogleFit, { Scopes } from 'react-native-google-fit';
-import googleFit from 'react-native-google-fit';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+} from '@react-native-google-signin/google-signin';
+import React from 'react';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import googleFit, {Scopes} from 'react-native-google-fit';
+import {useDispatch} from 'react-redux';
 import GoogleFittypes from '../../redux/GoogleFitRedux/actions';
-import { SVG } from '../../themes/Svg';
+import loginType from '../../redux/LoginRedux/Actions';
+import Images from '../../themes/image';
+import {Colors} from '../../themes/index';
 
 GoogleSignin.configure({
   scopes: ['https://www.googleapis.com/auth/drive.readonly'],
-  webClientId: '16185859257-2ih2ln8hvks4em20v1579f0o9iqm4chn.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
+
+  webClientId:
+    '16185859257-2ih2ln8hvks4em20v1579f0o9iqm4chn.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
+
   offlineAccess: true,
   forceCodeForRefreshToken: true,
 });
@@ -33,33 +36,36 @@ const options = {
 export default function Login() {
   const dispatch = useDispatch();
 
-  const login = async () => {
-    console.log('login');
-    await GoogleSignin.configure();
-    let user_data = await GoogleSignin.signIn();
-    await AsyncStorage.setItem('USER_DATA', JSON.stringify(user_data));
-    dispatch(loginType.userLoginGoogleSuccess(user_data));
-    await googleFit.checkIsAuthorized();
-    if (!googleFit.isAuthorized) {
-      const res = await googleFit.authorize(options);
-      if (res.success) {
-        dispatch(GoogleFittypes.getDailySteps());
-      } else {
+  const onLogin = async () => {
+    try {
+      await GoogleSignin.configure();
+      let user_data = await GoogleSignin.signIn();
+      await AsyncStorage.setItem('USER_DATA', JSON.stringify(user_data));
+      dispatch(loginType.userLoginGoogleSuccess(user_data));
+      await googleFit.checkIsAuthorized();
+      if (!googleFit.isAuthorized) {
+        const res = await googleFit.authorize(options);
+        if (res.success) {
+          dispatch(GoogleFittypes.getDailySteps());
+        } else {
+        }
       }
+    } catch (error) {
+      console.log('error', error);
     }
   };
 
   return (
     <View style={style.containner}>
       <View style={style.img}>
-        <SVG.Loginsvg />
+        <Image source={Images.imgLogin} />
       </View>
-      {/* <TouchableOpacity style={style.buttonGroup} onPress={() => login()}>
-        <View style={style.txtButon}>
-          <SVG.G />
-          <Text style={style.buttonTxt}>Continue with Google</Text>
-        </View>
-      </TouchableOpacity> */}
+      <GoogleSigninButton
+        style={{width: 192, height: 48}}
+        size={GoogleSigninButton.Size.Wide}
+        color={GoogleSigninButton.Color.Dark}
+        onPress={onLogin}
+      />
       <View style={style.footer}>
         <Text style={style.footerTxt}>
           Các
@@ -81,6 +87,7 @@ const style = StyleSheet.create({
   },
   img: {
     flex: 0.6,
+    marginBottom: 50,
   },
   buttonGroup: {
     backgroundColor: Colors.primary,

@@ -5,64 +5,79 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
+  Image,
+  ImageBackground,
 } from 'react-native';
-import { Colors } from '../../themes/index';
-import {SVG} from '../../themes/Svg';
+import {Icon, Colors} from '../../themes';
 import I18n from '../../i18n/i18n';
+import Images from '../../themes/image';
 
-export default function Feature(props) {
-  const data=props
-  let Group=null
-  switch (data.id) {
-    case "A":
-      Group={group: <SVG.Activitygroup/>,check:<SVG.Checkblue/>}
-      break;
-    case "H":
-      Group={group: <SVG.Heartgroup/>,check:<SVG.Checkpink/>}
-      break;
-    case "C":
-      Group={group: <SVG.Chatgroup/>,check:<SVG.Checkpurple/>}
-      break;
-    case "F":
-      Group={group: <SVG.Foodgroup/>,check:<SVG.Checkyellow/>}
-      break;
-  }
+export default function Feature({onPress, name, i18nKey, content, icon}) {
   return (
-    <TouchableOpacity style={style.container} onPress={()=>data.onpress()}>
-      {Group.group}
-      <View style={style.content}>
-        <Text style={style.contentTitle}> {data.i18nKey ? I18n.t(data.i18nKey) : props.children} </Text>
-        <Text style={style.subTitle}>{data.content}</Text>
-      </View>
-      <View style={style.checkGroup}>
-        {Group.check}
-      </View>
-    </TouchableOpacity>  
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <ImageBackground
+        imageStyle={{borderRadius: 10}}
+        source={Images.bgSlide}
+        resizeMode="cover"
+        style={styles.bgImage}>
+        <View style={styles.content}>
+          <Image source={icon} style={styles.iconStyle} resizeMode="contain" />
+          <View style={styles.row}>
+            <Text style={styles.title}>{i18nKey ? I18n.t(i18nKey) : name}</Text>
+            <View style={styles.borderCheck}>
+              <Image source={Icon.icCheck} style={styles.iconCheck} />
+            </View>
+          </View>
+          <Text style={styles.subTitle}>{content}</Text>
+        </View>
+      </ImageBackground>
+    </TouchableOpacity>
   );
 }
-const style=StyleSheet.create({
-  container:{
-    marginLeft:-40,
+const styles = StyleSheet.create({
+  container: {
+    width: 233,
+    height: 115,
+    marginRight: 20,
   },
-  content:{
-    position:"absolute",
-    top: 60,
-    left: 60
+  bgImage: {
+    flex: 1,
   },
-  checkGroup:{
-    position:"absolute",
-    top: 80,
-    right:40
+  content: {
+    flex: 1,
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
   },
-  contentTitle:{
-    width: 132,
-    fontSize:13,
+  title: {
+    fontSize: 13,
     fontWeight: 'bold',
-    fontFamily:"Lato"
+    fontFamily: 'Lato',
   },
-  subTitle:{
+  subTitle: {
     fontSize: 12,
-    fontFamily:"Lato",
-    color:Colors.colorBlackBlue
-  }
-})
+    fontFamily: 'Lato',
+    color: Colors.colorBlackBlue,
+  },
+  iconStyle: {
+    height: 40,
+    width: 40,
+  },
+  iconCheck: {
+    height: 18,
+    width: 24,
+  },
+  borderCheck: {
+    height: 44,
+    width: 44,
+    backgroundColor: Colors.blueGrey,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 8,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+});

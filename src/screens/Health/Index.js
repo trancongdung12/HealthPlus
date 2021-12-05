@@ -10,69 +10,75 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import CHeaderPage from '../../components/CHeaderPage';
-import { SVG } from '../../themes/Svg';
-import { Icon } from '../../themes';
+import {Icon} from '../../themes';
 import I18n from '../../i18n/i18n';
+import Icons from 'react-native-vector-icons/FontAwesome';
+import Colors from '../../themes/color';
+import Images from '../../themes/image';
 
 export default function Health() {
   return (
-    <View>
+    <View style={styles.container}>
       <CHeaderPage />
-      <ScrollView >
-          <View style={styles.functionHeader}>
-            <TouchableOpacity>
-              <View style={styles.item}>
-                <View style={[styles.item, {backgroundColor: '#3E4DBE'}]}>
-                  <Image source={Icon.silhouette} style={styles.icon}/>
-                </View>
-                <Text style={styles.text}>{I18n.t('1')}</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View style={styles.item}>
-                <View style={[styles.item, {backgroundColor: '#D8553A'}]}>
-                  <Image source={Icon.list} style={styles.icon}/>
-                </View>
-                <Text style={styles.text}>{I18n.t('2')}</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View style={styles.item}>
-                <View style={[styles.item, {backgroundColor: '#FDBA12'}]}>
-                  <Image source={Icon.people} style={styles.icon}/>
-                </View>
-                <Text style={styles.text}>{I18n.t('3')}</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View style={{justifyContent: 'center', alignContent: 'center', alignItems:'center'}}>
-            <SVG.Body/>
-          </View>
+      <ScrollView>
+        <View style={styles.functionHeader}>
+          <TouchableOpacity>
+            <View style={[styles.layoutItem, {backgroundColor: '#3E4DBE'}]}>
+              <Icons name="stethoscope" size={30} color={Colors.white} />
+            </View>
+            <Text style={styles.text}>{'Complete the test'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={[styles.layoutItem, {backgroundColor: '#D8553A'}]}>
+              <Icons name="list-alt" size={30} color={Colors.white} />
+            </View>
+            <Text style={styles.text}>{'General check up'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={[styles.layoutItem, {backgroundColor: '#FDBA12'}]}>
+              <Icons name="male" size={30} color={Colors.white} />
+            </View>
+            <Text style={styles.text}>{'Health status'}</Text>
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            marginTop: 40,
+            justifyContent: 'center',
+            alignContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Image style={styles.imgBody} source={Images.imgBody} />
+        </View>
       </ScrollView>
     </View>
   );
 }
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: Colors.white,
+  },
   functionHeader: {
     marginTop: 10,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    marginHorizontal: 20,
+    justifyContent: 'space-between',
   },
-  item: {
+  item: {},
+  layoutItem: {
     justifyContent: 'center',
     alignItems: 'center',
-    textAlign: 'center',
-    width: Dimensions.get('window').width/3 - 20,
-    borderRadius: 12,
+    width: Dimensions.get('window').width / 3 - 20,
+    borderRadius: 5,
+    height: 40,
   },
-  icon: {
-    marginTop: 10,
-    marginBottom: 10,
-    height: 30,
-    width: 30,
-    tintColor: '#ffffff',
+  imgBody: {
+    height: 418,
+    width: 272,
   },
   text: {
+    marginTop: 5,
     fontSize: 13,
     textAlign: 'center',
   },

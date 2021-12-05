@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { Navigation } from 'react-native-navigation';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Colors } from '../themes';
+import {Navigation} from 'react-native-navigation';
+import Icon from 'react-native-vector-icons/AntDesign';
+import {Colors} from '../themes';
 import HomeTab from './Tabs/HomeTab';
 import UserTab from './Tabs/UserTab';
 import HealthTab from './Tabs/HealthTab';
@@ -17,14 +17,17 @@ const pushScreen = (stackId, componentName, title, passProps) => {
       },
       options: {
         topBar: {
-          title: { text: title },
+          title: {text: title},
+        },
+        bottomTabs: {
+          visible: false,
         },
       },
     },
   });
 };
 
-const popScreen = (stackId) => {
+const popScreen = stackId => {
   Navigation.pop(stackId);
 };
 
@@ -33,7 +36,7 @@ const startRoot = () => {
     Icon.getImageSource('home', 20),
     Icon.getImageSource('heart', 20),
     Icon.getImageSource('user', 20),
-    Icon.getImageSource('giftbox', 20),
+    Icon.getImageSource('gift', 20),
   ]).then(([ic_book, ic_orders, ic_profile, ic_library]) => {
     Navigation.setRoot({
       root: {
