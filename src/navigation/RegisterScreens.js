@@ -28,7 +28,7 @@ import TrackSleep from '../screens/TrackSleep';
 import Doctors from '../screens/Doctors';
 import InfoDoctor from '../screens/Doctors/infoDoctor';
 import ChatWithDoctor from '../screens/Chat';
-
+import DetailTrackingSleep from '../screens/TrackSleep/DetailTracking';
 const SCREENS = {
   Home,
   Health,
@@ -53,6 +53,8 @@ const SCREENS = {
   Doctors,
   InfoDoctor,
   ChatWithDoctor,
+  DetailTrackingSleep,
+
 };
 
 function ReduxProvider(Component) {

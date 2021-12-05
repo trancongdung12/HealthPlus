@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -6,57 +6,78 @@ import {
   Dimensions,
   ScrollView,
   Image,
+  TouchableOpacity,
 } from 'react-native';
-// import { SvgIcon } from '../../themes/Svg'
-import Images from '../../themes/image';
 import Icon from '../../themes/icon';
 import Colors from '../../themes/color';
+import {NavigationUtils} from '../../navigation';
 
-export default function index() {
-  const [sheepData, setSheepData] = useState([
-    {
-      date: '6th June 2021',
-      time: '7h 17m',
-      start: '01:20 pm',
-      end: '7:00 am',
-    },
-    {
-      date: '5th June 2021',
-      time: '5h 20m',
-      start: '23:20 pm',
-      end: '8:20 am',
-    },
-    {
-      date: '4th June 2021',
-      time: '8h 28m',
-      start: '23:20 pm',
-      end: '8:24 am',
-    },
-    {
-      date: '3th June 2021',
-      time: '6h 20m',
-      start: '23:20 pm',
-      end: '7:00 am',
-    },
-    {
-      date: '2th June 2021',
-      time: '6h 29m',
-      start: '00:41 pm',
-      end: '8:30 am',
-    },
-    {
-      date: '1st June 2021',
-      time: '8h 07m',
-      start: '22:20 pm',
-      end: '8:27 am',
-    },
-    {
-      date: '31th May 2021',
-      time: '6h 20m',
-      start: '22:20 pm',
-      end: '7:00 am',
-    },
-  ]);
+const SleepTracking = props => {
+  const [sheepData, setSheepData] = useState([]);
+
+  useEffect(() => {
+    setSheepData([
+      {
+        title: 'Monday',
+        date: '5th Dec 2021',
+        time: '7h',
+        start: '23:00 pm',
+        end: '06:00 am',
+      },
+      {
+        title: 'Sunday',
+        date: '4th Dec 2021',
+        time: '7h',
+        start: '23:30 pm',
+        end: '06:30 am',
+      },
+      {
+        title: 'Saturday',
+        date: '3th Dec 2021',
+        time: '8h 28m',
+        start: '23:20 pm',
+        end: '8:24 am',
+      },
+      {
+        title: 'Friday',
+        date: '2th Dec 2021',
+        time: '6h 20m',
+        start: '23:20 pm',
+        end: '7:00 am',
+      },
+      {
+        title: 'Thursday',
+        date: '1st Dec 2021',
+        time: '6h 29m',
+        start: '00:41 pm',
+        end: '8:30 am',
+      },
+      {
+        title: 'Wednesday',
+        date: '30th Nov 2021',
+        time: '8h 07m',
+        start: '22:20 pm',
+        end: '8:27 am',
+      },
+      {
+        title: 'Tuesday',
+        date: '29th Nov 2021',
+        time: '6h 20m',
+        start: '22:20 pm',
+        end: '7:00 am',
+      },
+    ]);
+  }, []);
+
+  const onDetailSleep = item => {
+    NavigationUtils.pushScreen(
+      props?.componentId,
+      'DetailTrackingSleep',
+      'Your Sleep Details',
+      item,
+    );
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -100,7 +121,10 @@ export default function index() {
         </View>
         <ScrollView style={styles.cV} showsVerticalScrollIndicator={false}>
           {sheepData.map((item, i) => (
-            <View style={styles.cVItem} key={i}>
+            <TouchableOpacity
+              style={styles.cVItem}
+              key={i}
+              onPress={() => onDetailSleep(item)}>
               <View style={styles.cVItime}>
                 <Text style={styles.ct}>{item.date}</Text>
                 <Text style={styles.ctsub}>{item.time}</Text>
@@ -109,13 +133,14 @@ export default function index() {
                 <Text style={styles.tc}>Bedtime : {item.start}</Text>
                 <Text style={styles.tc}>Wake up : {item.end}</Text>
               </View>
-            </View>
+            </TouchableOpacity>
           ))}
         </ScrollView>
       </View>
     </View>
   );
-}
+};
+export default SleepTracking;
 
 const styles = StyleSheet.create({
   container: {

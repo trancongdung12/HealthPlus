@@ -14,7 +14,6 @@ import {LineChart} from 'react-native-chart-kit';
 import {Circle} from 'react-native-progress';
 import {useSelector} from 'react-redux';
 import Icon from '../../themes/icon';
-import {SvgIcon} from '../../themes/Svg';
 
 const base = [
   555, 300, 430, 200, 433, 678, 455, 321, 333, 400, 787, 322, 720, 480, 333,
@@ -49,13 +48,12 @@ export default function Generality() {
     AsyncStorage.getItem('input_caloires').then(res =>
       setFoodCal(JSON.parse(res)),
     );
-    console.log('s');
   }, []);
   const chooseType = type => {
     var now = new Date();
     var labels = [];
     var data = [];
-    if (type == 'week') {
+    if (type === 'week') {
       now.setDate(now.getDate() - 6);
       for (let i = 6; i >= 0; i--) {
         labels.push(`${now.getDate()}/${now.getMonth() + 1}`);
