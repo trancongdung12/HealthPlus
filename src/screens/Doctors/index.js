@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {Icon, Images} from '../../themes';
 import {NavigationUtils} from '../../navigation';
+import Colors from '../../themes/color';
 
 export default function Doctor() {
   const Info = number => {
@@ -41,7 +42,7 @@ export default function Doctor() {
         <View style={styles.content}>
           <Text style={styles.titlePage}>Find the right doctor for you!</Text>
           <View style={styles.inputSearch}>
-            <TextInput placeholder="search doctor" style={styles.input} />
+            <TextInput placeholder="Search doctor..." style={styles.input} />
             <TouchableOpacity style={styles.buttonSearch}>
               <Image
                 source={Icon.icSearch}
@@ -106,7 +107,8 @@ export default function Doctor() {
                       Dr. Nguyen Thi Xuan Mai
                     </Text>
                     <Text style={styles.specialized}>
-                      Dental Clinic - Ho Chi Minh City Odonto-Stomatology Hospital
+                      Dental Clinic - Ho Chi Minh City Odonto-Stomatology
+                      Hospital
                     </Text>
                   </View>
                 </View>
@@ -162,24 +164,31 @@ const styles = StyleSheet.create({
   },
   inputSearch: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
   },
   buttonSearch: {
     backgroundColor: '#4B7FFB',
     width: 60,
     height: 40,
     borderRadius: 8,
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginLeft: -5,
   },
   input: {
     marginLeft: 10,
     width: Dimensions.get('window').width - 110,
+    borderWidth: 1,
+    borderColor: Colors.divider,
+    borderRadius: 10,
+    paddingLeft: 10,
+    height: 40,
   },
   iconLoupe: {
     tintColor: '#ffff',
     height: 25,
-    width: 20,
+    width: 25,
   },
   listFaculty: {
     marginTop: 40,

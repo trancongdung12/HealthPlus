@@ -191,7 +191,7 @@ export default function Generality() {
               }>{`${currentSteps} steps left to reach the goal`}</Text>
           </View>
           <View>
-            <Image source={Icon.icStep} style={styles.iconWalk} />
+            {/* <Image source={Icon.icStep} style={styles.iconWalk} /> */}
           </View>
         </View>
       </View>

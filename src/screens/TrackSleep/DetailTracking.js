@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {LineChart, ProgressChart} from 'react-native-chart-kit';
+import Colors from '../../themes/color';
 
 const SCREEN_WIDTH = Dimensions.get('window').width - 32;
 
@@ -52,7 +53,7 @@ const DetailTracking = ({data}) => {
     CHART_LINE_DATA?.datasets?.[0]?.data?.map(item => {
       count = count + item;
     });
-    return (count + 100) / 8 / 100;
+    return Math.round((count + 100) / 8);
   };
 
   return (
@@ -68,34 +69,12 @@ const DetailTracking = ({data}) => {
       </View>
       <View style={styles.line} />
       <View style={styles.chartToday}>
-        <ProgressChart
-          data={{
-            labels: ['Sleep'], // optional
-            data: [renderTime()],
-          }}
-          width={SCREEN_WIDTH}
-          height={150}
-          strokeWidth={16}
-          radius={40}
-          chartConfig={{
-            backgroundColor: '#e26a00',
-            backgroundGradientFrom: '#fb8c00',
-            backgroundGradientTo: '#ffa726',
-            decimalPlaces: 2,
-            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-            labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-            style: {
-              borderRadius: 16,
-            },
-            propsForDots: {
-              r: '5',
-              strokeWidth: '2',
-              stroke: '#ffa726',
-            },
-          }}
-          style={styles.chartDay}
-          barPercentage={0.5}
-        />
+        <Text
+          style={{
+            fontSize: 20,
+            color: Colors.primary,
+            fontWeight: '600',
+          }}>{`Sleep ${renderTime()}%`}</Text>
       </View>
       <View style={styles.chartLine}>
         <LineChart
@@ -138,6 +117,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#0000',
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 20,
   },
   first: {
     flex: 1,
@@ -169,10 +149,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   chartToday: {
-    height: 150,
     borderBottomWidth: 1,
     borderBottomColor: '#dcdcdc',
-    marginBottom: 10,
+    marginBottom: 20,
+    paddingBottom: 20,
   },
   chartSleep: {
     borderRadius: 8,
@@ -184,7 +164,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   bottom: {
-    marginTop: 10,
+    marginTop: 30,
     marginBottom: 20,
     height: 80,
     flexDirection: 'row',

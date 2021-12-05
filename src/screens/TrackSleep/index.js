@@ -79,7 +79,7 @@ const SleepTracking = props => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
         <View style={[styles.headContent, styles.h1]}>
           <View style={styles.titGroup}>
@@ -114,30 +114,50 @@ const SleepTracking = props => {
           <Text style={styles.title}>7:00 am</Text>
         </View>
       </View>
-      <View style={styles.content}>
-        <View style={styles.contentH}>
-          <Text style={styles.cT}>In week</Text>
-          <Text style={styles.ct}>Average sleep time: 6h 20m</Text>
-        </View>
-        <ScrollView style={styles.cV} showsVerticalScrollIndicator={false}>
-          {sheepData.map((item, i) => (
-            <TouchableOpacity
-              style={styles.cVItem}
-              key={i}
-              onPress={() => onDetailSleep(item)}>
-              <View style={styles.cVItime}>
-                <Text style={styles.ct}>{item.date}</Text>
-                <Text style={styles.ctsub}>{item.time}</Text>
-              </View>
-              <View style={styles.cvTimeD}>
-                <Text style={styles.tc}>Bedtime : {item.start}</Text>
-                <Text style={styles.tc}>Wake up : {item.end}</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
+      <View>
+        <Text
+          style={{
+            fontSize: 18,
+            fontWeight: '600',
+            textAlign: 'center',
+            marginBottom: 10,
+            marginTop: 20,
+          }}>
+          Average sleep time in week: 6h 20m
+        </Text>
       </View>
-    </View>
+      <View style={styles.content}>
+        <View style={styles.cV}>
+          {sheepData.map((item, i) => (
+            <>
+              <TouchableOpacity
+                style={styles.cVItem}
+                key={i}
+                onPress={() => onDetailSleep(item)}>
+                <View style={styles.cVItime}>
+                  <Text style={styles.ct}>{item.date}</Text>
+                  <Text style={[styles.ctsub, {fontWeight: '700'}]}>
+                    {item.time}
+                  </Text>
+                </View>
+                <View style={styles.cvTimeD}>
+                  <Text style={styles.tc}>Bedtime: {item.start}</Text>
+                  <Text style={styles.tc}>Wake up: {item.end}</Text>
+                </View>
+              </TouchableOpacity>
+              <View
+                style={{
+                  height: 1,
+                  backgroundColor: Colors.shadow,
+                  opacity: 0.4,
+                  marginHorizontal: 16,
+                }}
+              />
+            </>
+          ))}
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 export default SleepTracking;
@@ -145,34 +165,22 @@ export default SleepTracking;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.blueGrey,
   },
   header: {
-    flex: 1,
+    marginTop: 20,
     width: '100%',
-    marginHorizontal: 30,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
   },
   headContent: {
-    flex: 1,
-    width: 160,
-    height: 180,
-    margin: 10,
-    borderRadius: 20,
+    width: Dimensions.get('screen').width / 2 - 30,
+    height: 150,
+    marginVertical: 10,
+    borderRadius: 10,
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-
-    elevation: 1,
   },
   titGroup: {
     flexDirection: 'row',
@@ -192,28 +200,19 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   h1: {
-    backgroundColor: '#FAFAFF',
+    backgroundColor: Colors.white,
   },
   h2: {
-    backgroundColor: '#FAFAFF',
+    backgroundColor: Colors.white,
   },
   content: {
-    flex: 2,
     width: Dimensions.get('screen').width * 0.9,
-    backgroundColor: '#FAFAFF',
+    backgroundColor: Colors.white,
     borderColor: '#F4F5F6',
     borderWidth: 1,
     borderRadius: 10,
-    marginBottom: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-
-    elevation: 1,
+    marginBottom: 40,
+    marginHorizontal: 20,
   },
   contentH: {
     alignItems: 'center',
@@ -232,13 +231,14 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   ct: {
-    color: '#3299A8',
     fontSize: 18,
   },
   ctsub: {
     color: '#FF9C8A',
+    fontSize: 16,
   },
   tc: {
     color: '#FF9C8A',
+    fontSize: 16,
   },
 });

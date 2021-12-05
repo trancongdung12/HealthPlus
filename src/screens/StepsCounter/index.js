@@ -11,8 +11,10 @@ import {useSelector} from 'react-redux';
 import CColumChartSteps from '../../components/Chart/CColumChartSteps';
 import CCricleChartSteps from '../../components/Chart/CCricleChartSteps';
 // import {SvgIcon} from '../../themes/Svg';
+import {calBMI} from '../../utils/Tool';
 
 export default function StepsCounter() {
+  const dataUserGoogle = useSelector(state => state.profile.data);
   const steps = useSelector(state => state.googlefit.dailySteps);
   const [currentSteps, setCurrentSteps] = useState(0);
   const [dailySteps, setDailySteps] = useState(steps);
@@ -62,11 +64,13 @@ export default function StepsCounter() {
     <View style={style.container}>
       <View style={style.topContainer}>
         <View style={style.selectDate}>
-          <TouchableOpacity style={{marginRight: 20}} onPress={() => preDay()}>
-          </TouchableOpacity>
-          <Text style={style.dateTitle}>Ngày {currentSteps.date}</Text>
-          <TouchableOpacity style={{marginLeft: 20}} onPress={() => nextDay()}>
-          </TouchableOpacity>
+          <TouchableOpacity
+            style={{marginRight: 20}}
+            onPress={() => preDay()}></TouchableOpacity>
+          <Text style={style.dateTitle}>Date {currentSteps.date}</Text>
+          <TouchableOpacity
+            style={{marginLeft: 20}}
+            onPress={() => nextDay()}></TouchableOpacity>
         </View>
         <Text style={style.titleDay}>{dailySteps[index]?.date}</Text>
         <View style={style.cricleChart}>
@@ -76,7 +80,9 @@ export default function StepsCounter() {
               source={require('../../assets/icon/trophy.png')}
               style={style.trophyIcon}
             />
-            <Text style={style.goalStepsT}>5000</Text>
+            <Text style={style.goalStepsT}>
+              {calBMI(dataUserGoogle?.weight, dataUserGoogle?.height) * 250}
+            </Text>
           </View>
           <View style={style.cricleChartFootIconC}>
             <Image
@@ -95,7 +101,7 @@ export default function StepsCounter() {
             <Text style={style.infoTitle}>Kcal</Text>
           </View>
           <View style={[style.InfoC, style.speedInfoC]}>
-            <Text style={style.infoTitle}>Tốc độ</Text>
+            <Text style={style.infoTitle}>Speed</Text>
             <Text style={style.infoData}>
               {index == 6 && '5'}
               {index == 5 && '6.5'}
@@ -108,7 +114,7 @@ export default function StepsCounter() {
             <Text style={style.infoTitle}>Km/h</Text>
           </View>
           <View style={[style.InfoC]}>
-            <Text style={style.infoTitle}>Khoảng cách</Text>
+            <Text style={style.infoTitle}>Distance</Text>
             <Text style={style.infoData}>
               {Math.round(currentSteps.value * 0.0025, 1)}
             </Text>
@@ -119,7 +125,11 @@ export default function StepsCounter() {
       <View style={style.mainContainer}>
         <View style={style.mainContent}>
           {/*here*/}
-          <CColumChartSteps data={dailySteps} style={style.columChart} />
+          <CColumChartSteps
+            max={calBMI(dataUserGoogle?.weight, dataUserGoogle?.height) * 250}
+            data={dailySteps}
+            style={style.columChart}
+          />
         </View>
       </View>
     </View>
