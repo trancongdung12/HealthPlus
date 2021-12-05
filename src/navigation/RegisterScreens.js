@@ -53,11 +53,8 @@ const SCREENS = {
   TrackSleep,
   Doctors,
   InfoDoctor,
-<<<<<<< HEAD
   SkinDetection,
-=======
   ChatWithDoctor,
->>>>>>> 0030faa6742e3e2ddb425d815666b4d9e6944f06
 };
 
 function ReduxProvider(Component) {
