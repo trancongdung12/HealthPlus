@@ -24,12 +24,12 @@ export default function Sleep(props) {
       </View>
       <View style={styles.rightContainer}>
         <View style={styles.content}>
-          <Text style={styles.title}>Giấc ngủ</Text>
+          <Text style={styles.title}>Your sleep</Text>
           <Text style={styles.subTitle}>{props.goal}</Text>
         </View>
         <View style={styles.progress}>
           {props.completeLevels === null ? (
-            <Text style={styles.notStart}> Đang cập nhật </Text>
+            <Text style={styles.notStart}>Updating </Text>
           ) : (
             <Bar
               progress={props.completeLevels}

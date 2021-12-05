@@ -39,9 +39,9 @@ export default function Doctor() {
     <ScrollView>
       <View style={styles.pageFinDoctor}>
         <View style={styles.content}>
-          <Text style={styles.titlePage}>Tìm bác sĩ mong muốn của bạn</Text>
+          <Text style={styles.titlePage}>Find the right doctor for you!</Text>
           <View style={styles.inputSearch}>
-            <TextInput placeholder="Tìm kiếm bác sỹ" style={styles.input} />
+            <TextInput placeholder="search doctor" style={styles.input} />
             <TouchableOpacity style={styles.buttonSearch}>
               <Image
                 source={Icon.icSearch}
@@ -51,7 +51,7 @@ export default function Doctor() {
             </TouchableOpacity>
           </View>
           <View style={styles.listFaculty}>
-            <Text style={styles.titlePart}>Danh sách chuyên khoa </Text>
+            <Text style={styles.titlePart}>Specialists</Text>
             <ScrollView
               horizontal={true}
               showsHorizontalScrollIndicator={false}>
@@ -65,7 +65,7 @@ export default function Doctor() {
                         resizeMode="contain"
                       />
                     </View>
-                    <Text style={styles.titleButton}>Răng</Text>
+                    <Text style={styles.titleButton}>Teeth</Text>
                   </View>
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -77,7 +77,7 @@ export default function Doctor() {
                         resizeMode="contain"
                       />
                     </View>
-                    <Text style={styles.titleButton}>Tim Mạch</Text>
+                    <Text style={styles.titleButton}>Heartbeat</Text>
                   </View>
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -89,14 +89,14 @@ export default function Doctor() {
                         resizeMode="contain"
                       />
                     </View>
-                    <Text style={styles.titleButton}>Mắt</Text>
+                    <Text style={styles.titleButton}>Eyes</Text>
                   </View>
                 </TouchableOpacity>
               </View>
             </ScrollView>
           </View>
           <View style={styles.listFaculty}>
-            <Text style={styles.titlePart}>Các Bác Sỹ hàng đầu </Text>
+            <Text style={styles.titlePart}>Doctors</Text>
             <View style={styles.contentPart}>
               <TouchableOpacity onPress={() => Info(1)}>
                 <View style={styles.item}>
@@ -106,7 +106,7 @@ export default function Doctor() {
                       Dr. Nguyen Thi Xuan Mai
                     </Text>
                     <Text style={styles.specialized}>
-                      CK Răng - Bệnh viện Răng Hàm Mặt TP.HCM
+                      Dental Clinic - Ho Chi Minh City Odonto-Stomatology Hospital
                     </Text>
                   </View>
                 </View>
