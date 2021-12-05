@@ -29,7 +29,7 @@ import Doctors from '../screens/Doctors';
 import InfoDoctor from '../screens/Doctors/infoDoctor';
 import SkinDetection from '../screens/SkinDetection/index';
 import ChatWithDoctor from '../screens/Chat';
-
+import DetailTrackingSleep from '../screens/TrackSleep/DetailTracking';
 const SCREENS = {
   Home,
   Health,
@@ -55,6 +55,8 @@ const SCREENS = {
   InfoDoctor,
   SkinDetection,
   ChatWithDoctor,
+  DetailTrackingSleep,
+
 };
 
 function ReduxProvider(Component) {
