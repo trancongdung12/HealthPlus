@@ -13,7 +13,7 @@ import Swiper from 'react-native-swiper';
 import {Colors} from '../../themes/index';
 import {NavigationUtils} from '../../navigation/index';
 import AsyncStorage from '@react-native-community/async-storage';
-
+const windowWidth = Dimensions.get('window').width;
 export default function Intro() {
   console.log('start intro');
   const DATAINTROS = [
@@ -72,7 +72,10 @@ export default function Intro() {
                   <Text style={styles.subTitle}>{item.subTitle}</Text>
                 </View>
               ) : (
-                <View style={{alignItems: 'center'}}>
+                <View
+                  style={{
+                    alignItems: 'center',
+                  }}>
                   <Text style={styles.titleIntroPageStart}>{item.title}</Text>
                   <Text style={styles.subTitlePageStart}>{item.subTitle}</Text>
                   <TouchableOpacity
@@ -84,7 +87,6 @@ export default function Intro() {
                         textAlign: 'center',
                         fontSize: 16,
                       }}>
-                      {' '}
                       Bắt đầu
                     </Text>
                   </TouchableOpacity>
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 16,
     textAlign: 'center',
-    marginHorizontal: 16,
+    marginHorizontal: 30,
   },
 
   // page start
@@ -150,7 +152,7 @@ const styles = StyleSheet.create({
     marginRight: Dimensions.get('window').width - 210,
   },
   imageIntroPageStart: {
-    width: 390,
+    width: windowWidth,
     height: 470,
     marginBottom: 25,
   },

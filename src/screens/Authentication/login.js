@@ -60,12 +60,11 @@ export default function Login() {
       <View style={style.img}>
         <Image source={Images.imgLogin} />
       </View>
-      <GoogleSigninButton
-        style={{width: 192, height: 48}}
-        size={GoogleSigninButton.Size.Wide}
-        color={GoogleSigninButton.Color.Dark}
-        onPress={onLogin}
-      />
+      <TouchableOpacity style={style.buttonGroup} onPress={onLogin}>
+        <View style={style.txtButon}>
+          <Text style={style.buttonTxt}>Continue with Google</Text>
+        </View>
+      </TouchableOpacity>
       <View style={style.footer}>
         <Text style={style.footerTxt}>
           Các

@@ -19,7 +19,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {Icon as Icons} from '../../themes';
 import Images from '../../themes/image';
 
-const SERVER_URL = 'https://healthplusai.herokuapp.com';
+const SERVER_URL = 'https://skindetect.herokuapp.com/';
 
 const SkinDetection = () => {
   const [image, setImage] = useState(null);
@@ -69,10 +69,10 @@ const SkinDetection = () => {
   const handleUploadPhoto = async e => {
     setIsAnalyzing(true);
     const img = await ImgToBase64.getBase64String(image.uri);
-    const res = await axios.post(`${SERVER_URL}/food/`, {img: img});
-    console.log(res.data.data);
-    setResponse(res.data.data);
-    setIsAnalyzing(false);
+    const res = await axios.post(`${SERVER_URL}/skin/`, {img: img});
+    console.log('res', res);
+    // setResponse(res.data.data);
+    // setIsAnalyzing(false);
   };
 
   return (

@@ -17,6 +17,7 @@ import Sleep from '../../components/Sleep';
 import DisplayedText from '../../components/displayedText';
 import {NavigationUtils} from '../../navigation';
 import Images from '../../themes/image';
+import {calBMI} from '../../utils/Tool';
 
 const openFoodDection = () => {
   NavigationUtils.pushScreen(
@@ -185,14 +186,19 @@ export default function Home() {
               title={'Đi bộ'}
               icon={Icon.icon_walk}
               completeLevels={currentSteps / 5000}
-              goal={currentSteps + '/5000 step'}
+              goal={
+                currentSteps +
+                `/${
+                  calBMI(dataUserGoogle?.weight, dataUserGoogle?.height) * 250
+                } step`
+              }
               color={'#87DCFA'}
             />
             <Sleep
               title={'Ngủ'}
               icon={Icon.icon_sleeping}
               completeLevels={null}
-              goal={'4 hours 30 minutes'}
+              goal={'7h 30m'}
               color={'#F8EDD2'}
             />
           </View>

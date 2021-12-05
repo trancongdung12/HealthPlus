@@ -14,6 +14,7 @@ import {LineChart} from 'react-native-chart-kit';
 import {Circle} from 'react-native-progress';
 import {useSelector} from 'react-redux';
 import Icon from '../../themes/icon';
+import {calBMI} from '../../utils/Tool';
 
 const base = [
   555, 300, 430, 200, 433, 678, 455, 321, 333, 400, 787, 322, 720, 480, 333,
@@ -43,8 +44,28 @@ const datac = {
 export default function Generality() {
   const profile = useSelector(state => state.profile.data);
   const dataUserGoogle = useSelector(state => state.login.dataUser);
+  const steps = useSelector(state => state.googlefit.dailySteps);
   const [dataChart, setDataChart] = useState({showType: 'week', data: datac});
   const [foodCal, setFoodCal] = useState({value: 0});
+  const [currentSteps, setCurrentSteps] = useState(0);
+  const [percentStep, setPercentStep] = useState(0);
+
+  useEffect(() => {
+    if (steps) {
+      steps.length > 0 && setCurrentSteps(steps[steps.length - 1].value);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (steps) {
+      setPercentStep(
+        ((currentSteps / (calBMI(profile?.weight, profile?.height) * 250)) *
+          100) /
+          100,
+      );
+    }
+  }, [currentSteps]);
+
   useEffect(() => {
     AsyncStorage.getItem('input_caloires').then(res =>
       setFoodCal(JSON.parse(res)),
@@ -81,6 +102,7 @@ export default function Generality() {
     };
     setDataChart({showType: type, data: d});
   };
+
   return (
     <ScrollView style={styles.contenPage} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
@@ -106,10 +128,7 @@ export default function Generality() {
               alignItems: 'center',
             }}>
             <Text style={styles.textBMI}>
-              {Math.round(
-                profile?.weight /
-                  ((profile?.height / 100) * (profile?.height / 100)),
-              )}
+              {calBMI(profile?.weight, profile?.height)}
             </Text>
             <Text style={styles.textBody}>{' WHO BMI (kg/m2)'}</Text>
           </View>
@@ -161,11 +180,16 @@ export default function Generality() {
             size={80}
             showsText={true}
             style={{marginLeft: 10}}
-            progress={0.4}
+            progress={percentStep}
           />
           <View style={styles.cGT}>
-            <Text style={styles.cD}>5000</Text>
-            <Text styles={styles.sCD}>950 steps left to reach the goal</Text>
+            <Text style={styles.cD}>
+              {calBMI(profile?.weight, profile?.height) * 250}
+            </Text>
+            <Text
+              styles={
+                styles.sCD
+              }>{`${currentSteps} steps left to reach the goal`}</Text>
           </View>
           <View>
             <Image source={Icon.icStep} style={styles.iconWalk} />
@@ -180,7 +204,7 @@ export default function Generality() {
             <View></View>
           </View>
           <Text style={styles.titleM}>
-            8 <Text style={styles.titleU}>h</Text> 55{' '}
+            7 <Text style={styles.titleU}>h</Text> 30{' '}
             <Text style={styles.titleU}>min</Text>{' '}
           </Text>
         </View>
@@ -196,7 +220,7 @@ export default function Generality() {
             </>
           </View>
           <Text style={styles.titleM}>
-            90 <Text style={styles.titleU}>BPM</Text>
+            66 <Text style={styles.titleU}>BPM</Text>
           </Text>
         </View>
       </View>
