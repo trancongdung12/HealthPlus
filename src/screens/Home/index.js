@@ -99,10 +99,9 @@ export default function Home() {
                     source={Icon.icon_heartbeat}
                     style={styles.iconButton}
                   />
-                  {/* <Text style={styles.titleButton}>Nhịp tim</Text> */}
                   <DisplayedText
                     i18nKey={'heartbeat'}
-                    styleText={styles.titleButton}>
+                    styleText={[styles.titleButton]}>
                     {' '}
                     Heartbeat
                   </DisplayedText>
@@ -122,10 +121,12 @@ export default function Home() {
                     style={styles.iconButton}
                   />
                   <DisplayedText
-                    i18nKey={'Oxygen'}
-                    styleText={styles.titleButton}>
-                    {' '}
-                    Nồng độ oxy{' '}
+                    // i18nKey={'Oxygen'}
+                    styleText={[
+                      styles.titleButton,
+                      {marginLeft: 15, textAlign: 'left'},
+                    ]}>
+                    Oxygen concentration{' '}
                   </DisplayedText>
                 </View>
                 <View style={styles.parameter}>

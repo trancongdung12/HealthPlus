@@ -117,9 +117,7 @@ export default function User() {
                 : styles.buttonTabBar
             }
             onPress={() => menu()}>
-            <DisplayedText i18nKey={'menu'} styleText={styles.titleButton}>
-              Danh mục
-            </DisplayedText>
+            <DisplayedText styleText={styles.titleButton}>Menu</DisplayedText>
           </TouchableOpacity>
           <TouchableOpacity
             style={
@@ -135,7 +133,7 @@ export default function User() {
             </DisplayedText>
           </TouchableOpacity>
         </View>
-        <ScrollView style={{height: 362}}>
+        <ScrollView style={{height: 400}} showsVerticalScrollIndicator={false}>
           <View style={styles.content}>
             {dataShow.map((item, index) => (
               <CItemFunctionUser

@@ -75,13 +75,6 @@ const SkinDetection = () => {
     setIsAnalyzing(false);
   };
 
-  const getDam = () =>
-    Math.round(response.slice(0, 11).sum('value') * 20 * 100) / 100;
-  const getBeo = () =>
-    Math.round(response.slice(11, 19).sum('value') * 20 * 100) / 100;
-  const getXo = () =>
-    Math.round(response.slice(19, 20).sum('value') * 20 * 100) / 100;
-
   return (
     <View style={styles.container}>
       {isAnalyzing ? (
@@ -164,13 +157,18 @@ const SkinDetection = () => {
         <View style={styles.content}>
           <Text style={styles.contentTit}>Skin disease</Text>
           <View style={styles.contentMain}>
-            <Text style={styles.textDesc}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries,
-            </Text>
+            {!image?.uri ? (
+              <Text style={styles.textDesc}>No data</Text>
+            ) : (
+              <>
+                <Text style={styles.textTitle}>Acne</Text>
+                <Text style={styles.textDesc}>
+                  {
+                    'Commonly located on the face, neck, shoulders, chest, and upper backn \nBreakouts on the skin composed of blackheads, whiteheads, pimples, or deep, painful cysts and nodules \nMay leave scars or darken the skin if untreated'
+                  }
+                </Text>
+              </>
+            )}
           </View>
         </View>
       </ScrollView>
@@ -259,11 +257,18 @@ const styles = StyleSheet.create({
   },
   contentTit: {
     paddingTop: 30,
-    paddingBottom: 20,
+    paddingBottom: 10,
     fontFamily: 'roboto',
     fontSize: 20,
     fontWeight: '600',
     alignSelf: 'baseline',
+  },
+  textTitle: {
+    fontWeight: '700',
+    fontFamily: 'roboto',
+    fontSize: 16,
+    paddingHorizontal: 16,
+    marginBottom: 5,
   },
   textDesc: {
     fontFamily: 'roboto',
@@ -271,7 +276,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   contentMain: {
-    paddingVertical: 20,
+    paddingVertical: 10,
     backgroundColor: '#FFFFFF',
     borderColor: '#F4F5F6',
     borderWidth: 1,
