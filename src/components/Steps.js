@@ -24,7 +24,7 @@ export default function Steps(props) {
       </View>
       <View style={styles.rightContainer}>
         <View style={styles.content}>
-          <Text style={styles.title}>Đếm bước chân</Text>
+          <Text style={styles.title}>Count your steps</Text>
           <Text style={styles.subTitle}>{props.goal}</Text>
         </View>
         <View style={styles.progress}>

@@ -79,7 +79,7 @@ export default function Home() {
                 </>
               ) : (
                 <Text style={{color: Colors.white}}>
-                  Vui Lòng Đăng Nhập Để Sử Dụng Ứng Dụng
+                  Please login to using application
                 </Text>
               )}
             </View>
@@ -100,7 +100,7 @@ export default function Home() {
                     i18nKey={'heartbeat'}
                     styleText={styles.titleButton}>
                     {' '}
-                    Nhip Tim
+                    Heartbeat
                   </DisplayedText>
                 </View>
                 <View style={styles.parameter}>
@@ -132,7 +132,7 @@ export default function Home() {
             </TouchableOpacity>
           </View>
           <View style={styles.recommentSession}>
-            <Text style={styles.titlePart}>ĐỀ XUẤT </Text>
+            <Text style={styles.titlePart}>SUGGESTIONS</Text>
             <ScrollView
               style={styles.recommendScroll}
               horizontal={true}
@@ -140,28 +140,28 @@ export default function Home() {
               <Feature
                 icon={Icon.icEye}
                 name="Theo dõi hoạt động"
-                content="4 hoạt động"
+                content="4 activities"
                 i18nKey="Activities"
                 onPress={openGenerality}
               />
               <Feature
                 icon={Icon.icHeart}
                 name="Đo nhịp tim"
-                content="Bắt đầu"
+                content="start"
                 i18nKey="Pulse"
                 onPress={openMeansureHeartBeat}
               />
               <Feature
                 icon={Icon.icChat}
                 name="Chat With Mr.Heath+"
-                content="Bắt đầu"
+                content="start"
                 i18nKey="Chat-with-Mr-Health"
                 onPress={opendoctors}
               />
               <Feature
                 icon={Icon.icList}
                 name="Kiểm tra chế độ dinh dưỡng"
-                content="Bắt đầu"
+                content="start"
                 i18nKey="Nutrition"
                 onPress={openFoodDection}
               />
@@ -169,19 +169,19 @@ export default function Home() {
           </View>
 
           <View style={styles.activityContainner}>
-            <Text style={styles.titlePart}>HOẠT ĐỘNG</Text>
+            <Text style={styles.titlePart}>ACTIVITIES</Text>
             <Steps
               title={'Đi bộ'}
               icon={Icon.icon_walk}
               completeLevels={currentSteps / 5000}
-              goal={currentSteps + '/5000 bước'}
+              goal={currentSteps + '/5000 step'}
               color={'#87DCFA'}
             />
             <Sleep
               title={'Ngủ'}
               icon={Icon.icon_sleeping}
               completeLevels={null}
-              goal={'4 giờ 30 phút'}
+              goal={'4 hours 30 minutes'}
               color={'#F8EDD2'}
             />
           </View>
