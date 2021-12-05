@@ -91,8 +91,9 @@ export default function Upgrade() {
             </View>
             <View style={styles.functionPost}>
               <View>
-                <Text style={styles.price}>{I18n.t('Money-premium')}</Text>
-                <Text style={styles.price}>{I18n.t('Month')}</Text>
+                <Text style={styles.price}>
+                  {I18n.t('Money-premium') + I18n.t('Month')}
+                </Text>
               </View>
               <TouchableOpacity
                 style={styles.buttonSubmit}
@@ -126,8 +127,9 @@ export default function Upgrade() {
             </View>
             <View style={styles.functionPost}>
               <View>
-                <Text style={styles.price}>{I18n.t('Money-pro')}</Text>
-                <Text style={styles.price}>{I18n.t('Month')}</Text>
+                <Text style={styles.price}>
+                  {I18n.t('Money-pro') + I18n.t('Month')}
+                </Text>
               </View>
               <TouchableOpacity
                 style={styles.buttonSubmit}

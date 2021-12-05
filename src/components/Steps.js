@@ -17,7 +17,7 @@ export default function Steps(props) {
     <TouchableOpacity
       style={styles.containner}
       onPress={() =>
-        NavigationUtils.pushScreen('HomeTab', 'StepsCounter', 'Số bước chân')
+        NavigationUtils.pushScreen('HomeTab', 'StepsCounter', 'Steps Counter')
       }>
       <View style={styles.leftConatiner}>
         <Image source={Icon.icStep} style={styles.iconStyle} />

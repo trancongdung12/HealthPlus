@@ -91,7 +91,7 @@ export default function User() {
   };
 
   return (
-    <View>
+    <ScrollView>
       <View style={styles.logo}>
         <Image source={Images.logo} style={styles.imageLogo} />
       </View>
@@ -133,7 +133,7 @@ export default function User() {
             </DisplayedText>
           </TouchableOpacity>
         </View>
-        <ScrollView style={{height: 400}} showsVerticalScrollIndicator={false}>
+        <View>
           <View style={styles.content}>
             {dataShow.map((item, index) => (
               <CItemFunctionUser
@@ -154,9 +154,9 @@ export default function User() {
               feature={logout}
             />
           </View>
-        </ScrollView>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
