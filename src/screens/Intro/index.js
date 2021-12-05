@@ -1,10 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'react-native';
-import { Images } from '../../themes/index';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
+import {Images} from '../../themes/index';
 import Swiper from 'react-native-swiper';
-import { Colors } from '../../themes/index';
-import { NavigationUtils } from '../../navigation/index';
+import {Colors} from '../../themes/index';
+import {NavigationUtils} from '../../navigation/index';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export default function Intro() {
@@ -42,43 +49,49 @@ export default function Intro() {
     },
   ];
 
-  const start=async ()=>{
-    console.log("click start");
-    try{
-    await AsyncStorage.setItem('start',"start")
-    NavigationUtils.startLogin()
-    }
-    catch(e){
+  const start = async () => {
+    console.log('click start');
+    try {
+      await AsyncStorage.setItem('start', 'start');
+      NavigationUtils.startLogin();
+    } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <Swiper loop={false} autoplay activeDotColor={'#701BC8'}>
         {DATAINTROS.map((item, index) => {
           return (
             <View key={index} style={styles.Intro}>
               {item.startButton === false ? (
-                <View>
+                <View style={styles.contentIntro}>
                   <Image source={item.imageSource} style={styles.imageIntro} />
                   <Text style={styles.titleIntro}>{item.title}</Text>
                   <Text style={styles.subTitle}>{item.subTitle}</Text>
                 </View>
               ) : (
-                <View style={{ alignItems: 'center' }}>
+                <View style={{alignItems: 'center'}}>
                   <Text style={styles.titleIntroPageStart}>{item.title}</Text>
                   <Text style={styles.subTitlePageStart}>{item.subTitle}</Text>
                   <TouchableOpacity
                     style={styles.buttonStart}
-                    onPress={() => start()}
-                  >
-                    <Text style={{ color: Colors.white, textAlign: 'center', fontSize: 16 }}>
+                    onPress={() => start()}>
+                    <Text
+                      style={{
+                        color: Colors.white,
+                        textAlign: 'center',
+                        fontSize: 16,
+                      }}>
                       {' '}
                       Bắt đầu
                     </Text>
                   </TouchableOpacity>
-                  <Image style={styles.imageIntroPageStart} source={item.imageSource} />
+                  <Image
+                    style={styles.imageIntroPageStart}
+                    source={item.imageSource}
+                  />
                 </View>
               )}
             </View>
@@ -107,10 +120,9 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     marginTop: 10,
-    marginLeft: 16,
-    marginRight: 16,
     fontSize: 16,
     textAlign: 'center',
+    marginHorizontal: 16,
   },
 
   // page start
@@ -141,5 +153,8 @@ const styles = StyleSheet.create({
     width: 390,
     height: 470,
     marginBottom: 25,
+  },
+  contentIntro: {
+    paddingHorizontal: 16,
   },
 });

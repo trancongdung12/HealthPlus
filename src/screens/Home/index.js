@@ -15,7 +15,6 @@ import Feature from '../../components/Feature';
 import Steps from '../../components/Steps';
 import Sleep from '../../components/Sleep';
 import DisplayedText from '../../components/displayedText';
-import LanguageAction from '../../redux/Language/actions';
 import {NavigationUtils} from '../../navigation';
 import Images from '../../themes/image';
 
