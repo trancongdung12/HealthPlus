@@ -70,13 +70,12 @@ export default function Generality() {
     AsyncStorage.getItem('input_caloires').then(res =>
       setFoodCal(JSON.parse(res)),
     );
-    console.log('s');
   }, []);
   const chooseType = type => {
     var now = new Date();
     var labels = [];
     var data = [];
-    if (type == 'week') {
+    if (type === 'week') {
       now.setDate(now.getDate() - 6);
       for (let i = 6; i >= 0; i--) {
         labels.push(`${now.getDate()}/${now.getMonth() + 1}`);
